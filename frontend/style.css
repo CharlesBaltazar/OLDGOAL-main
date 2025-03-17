@@ -1,0 +1,92 @@
+/* style.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #85FBEB, #6AE4F6);
+    font-family: 'Jost', sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+}
+
+hr {
+    border-color: black;
+}
+
+/* Cadastro */
+
+.main-reg-content {
+    background-color: #D6FBF8;
+    margin: 100px;
+    padding: 50px;
+    box-shadow: 1px 1px 5px black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.sub-title {
+    display: flex;
+    justify-content: center;
+}
+
+.register-container {
+    display: flex;
+    gap: 25px;
+}
+
+.register-container input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #0F87BA;
+    color: #0F87BA;
+    font-size: 16px;
+    padding: 3px;
+    outline: none;
+}
+
+.register-container input::placeholder {
+    color: #0F87BA;
+}
+
+.register-container button {
+    background: none;
+    border-radius: 25px;
+    border: none;
+    padding: 5px;
+    border: 2px solid #0F87BA;
+    color: #0F87BA;
+    cursor: pointer;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.reg-button {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.reg-button a {
+    color: black;
+    text-decoration: none;
+}
+
+.destaque {
+    color: #0F87BA;
+}
+
+.image-container img {
+    width: 500px;
+}
