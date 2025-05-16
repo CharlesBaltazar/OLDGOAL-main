@@ -1,0 +1,354 @@
+/* style.css */
+body {
+    margin: 0;
+    font-family: 'Jost', Arial, sans-serif;
+    background: linear-gradient(to bottom, #c6f7fa 50%, #6ae4f6 50%);
+    min-height: 100vh;
+}
+
+h1, h2 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+}
+
+hr {
+    border-color: black;
+}
+
+/* Cadastro */
+
+.main-reg-content {
+    background-color: #D6FBF8;
+    margin: 100px;
+    padding: 50px;
+    box-shadow: 1px 1px 5px black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.sub-title {
+    display: flex;
+    justify-content: center;
+}
+
+.register-container {
+    display: flex;
+    gap: 25px;
+}
+
+.register-container input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #0F87BA;
+    color: #0F87BA;
+    font-size: 16px;
+    padding: 3px;
+    outline: none;
+}
+
+.register-container input::placeholder {
+    color: #0F87BA;
+}
+
+.register-container button {
+    background: none;
+    border-radius: 25px;
+    border: none;
+    padding: 5px;
+    border: 2px solid #0F87BA;
+    color: #0F87BA;
+    cursor: pointer;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.reg-button {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.reg-button a {
+    color: black;
+    text-decoration: none;
+}
+
+.destaque {
+    color: #0F87BA;
+}
+
+.image-container img {
+    width: 500px;
+}
+
+/* Login */
+.main-log-content {
+    background-color: #D6FBF8;
+    margin: 100px;
+    padding: 50px;
+    box-shadow: 1px 1px 5px black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-container {
+    flex: 1;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    width: 500px;
+}
+
+.login-container {
+    display: flex;
+    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #0F87BA;
+    color: #0F87BA;
+    font-size: 16px;
+    padding: 3px;
+    outline: none;
+}
+
+.login-container input::placeholder {
+    color: #0F87BA;
+}
+
+.login-container button {
+    background: none;
+    border-radius: 25px;
+    border: none;
+    padding: 5px;
+    border: 2px solid #0F87BA;
+    color: #0F87BA;
+    cursor: pointer;
+}
+
+.log-button {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.log-button a {
+    color: black;
+    text-decoration: none;
+}
+
+.gender-select button {
+    border: 2px solid #0F87BA;
+    background: none;
+    color: #0F87BA;
+    border-radius: 25px;
+    padding: 8px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.gender-select button.selected {
+    background: #0F87BA;
+    color: #fff;
+}
+
+/* HEADER HOME */
+.header-content-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+.hist-button {
+    border: 2px solid #0F87BA;
+    background: none;
+    color: #0F87BA;
+    border-radius: 30px;
+    padding: 14px 48px;
+    font-size: 22px;
+    font-family: 'Jost', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-weight: 400;
+}
+
+.hist-button:hover {
+    background: #0F87BA;
+    color: #fff;
+}
+
+.calorie-circle {
+    width: 320px;
+    height: 320px;
+    border: 2px solid #0F87BA;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.15);
+    box-sizing: border-box;
+}
+
+.calorie-value {
+    font-size: 48px;
+    color: #0F87BA;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.calorie-label {
+    font-size: 22px;
+    color: #0F87BA;
+    font-weight: 400;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.next-meal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.apple-icon {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #0F87BA;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    color: #0F87BA;
+    margin-bottom: 4px;
+    background: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    outline: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #0F87BA;
+    padding: 0;
+}
+
+.apple-icon:hover, .apple-icon:focus {
+    background: #0F87BA;
+    color: #fff;
+    border-color: #0F87BA;
+}
+
+.next-meal-label {
+    color: #0F87BA;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+/* MAIN HOME */
+.main-content-home {
+    margin-top: 60px;
+    background: linear-gradient(to bottom, #6ae4f6 0%, #6ae4f6 100%);
+    padding: 60px 0 0 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.access-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 28px;
+}
+
+.access-row.center {
+    justify-content: center;
+}
+
+.access-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 2px solid #0F87BA;
+    background: none;
+    color: #0F87BA;
+    border-radius: 20px;
+    padding: 18px 38px;
+    font-size: 22px;
+    font-family: 'Jost', sans-serif;
+    cursor: pointer;
+    font-weight: 400;
+    transition: background 0.2s, color 0.2s;
+    min-width: 270px;
+    justify-content: flex-start;
+}
+
+.access-btn i {
+    font-size: 28px;
+    margin-right: 10px;
+}
+
+.access-btn:hover {
+    background: #0F87BA;
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .header-content-home {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .main-content-home {
+        padding: 30px 0 0 0;
+    }
+    .access-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .access-btn {
+        min-width: 180px;
+        font-size: 18px;
+        padding: 14px 18px;
+    }
+    .calorie-circle {
+        width: 220px;
+        height: 220px;
+    }
+    .apple-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+}
