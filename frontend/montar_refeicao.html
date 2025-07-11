@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Montar Refeição</title>
+    <link rel="icon" href="/backend/assets/OG_icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="montar-container">
+        <div class="montar-header">
+            <button class="voltar-btn">VOLTAR</button>
+            <div class="refeicoes-apple"><i class="fa-solid fa-apple-whole"></i></div>
+        </div>
+        <div class="montar-content">
+            <form id="form-refeicao" class="form-refeicao">
+                <div class="form-col">
+                    <label>Escolha um Nome para sua refeição!</label>
+                    <input type="text" id="nome-refeicao" placeholder="Nome da Refeição" required>
+                    <label>Escolha um horário para sua refeição</label>
+                    <input type="time" id="horario-refeicao" required>
+                    <label>Escolha um ícone para sua refeição</label>
+                    <div class="icones-refeicao">
+                        <button type="button" class="icone-btn" data-icone="icone1"><img src="./assets/Morning.png" alt="icone1"></button>
+                        <button type="button" class="icone-btn" data-icone="icone2"><img src="./assets/Afternoon.png" alt="icone2"></button>
+                        <button type="button" class="icone-btn" data-icone="icone3"><img src="./assets/Night.png" alt="icone3"></button>
+                    </div>
+                </div>
+                <div class="form-col">
+                    <label>Monte sua refeição</label>
+                    <input type="text" id="nome-alimento" placeholder="Nome do Alimento">
+                    <input type="text" id="quantidade-alimento" placeholder="Quantidade do Alimento em gramas">
+                    <input type="number" id="calorias-alimento" placeholder="Calorias do Alimento">
+                    <button type="button" id="adicionar-alimento">ADICIONAR</button>
+                    <div class="alimentos-list" id="alimentos-list">
+                        <!-- Alimentos adicionados aparecem aqui -->
+                    </div>
+                    <div class="calorias-totais" id="calorias-totais">Calorias atuais da sua refeição: 0Kcal</div>
+                </div>
+                <button type="submit" class="confirmar-btn">CONFIRMAR</button>
+            </form>
+        </div>
+    </div>
+    <script src="./montar_refeicao.js"></script>
+</body>
+</html> 

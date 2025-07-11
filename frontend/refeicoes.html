@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Refeições</title>
+    <link rel="icon" href="/backend/assets/OG_icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="refeicoes-container">
+        <div class="refeicoes-header">
+            <button class="voltar-btn">VOLTAR</button>
+            <div class="refeicoes-apple"><i class="fa-solid fa-apple-whole"></i></div>
+            <button class="montar-btn">MONTAR REFEIÇÃO</button>
+        </div>
+        <div class="refeicoes-list" id="refeicoes-list">
+            <!-- Refeições do usuário serão inseridas aqui via JS -->
+        </div>
+        <button class="finalizar-btn">FINALIZAR</button>
+    </div>
+    <div id="modal-refeicao" class="modal-refeicao" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-detalhes"></div>
+        </div>
+    </div>
+    <script src="./refeicoes.js"></script>
+</body>
+</html> 

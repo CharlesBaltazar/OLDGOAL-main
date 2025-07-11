@@ -64,4 +64,94 @@ app.post('/login', (req, res) => {
     });
 });
 
+// Rotas de refeições
+app.get('/refeicoes', (req, res) => {
+    const { usuario_id } = req.query;
+    db.query('SELECT * FROM refeicao WHERE usuario_id = ?', [usuario_id], (err, results) => {
+        if (err) return res.status(500).json({ error: 'Erro ao buscar refeições', details: err.message });
+        res.json(results);
+    });
+});
+
+app.post('/refeicoes', (req, res) => {
+    const { usuario_id, nome, horario, icone } = req.body;
+    db.query('INSERT INTO refeicao (usuario_id, nome, horario, icone) VALUES (?, ?, ?, ?)', [usuario_id, nome, horario, icone], (err, result) => {
+        if (err) return res.status(500).json({ error: 'Erro ao criar refeição', details: err.message });
+        res.status(201).json({ id: result.insertId });
+    });
+});
+
+app.delete('/refeicoes/:id', (req, res) => {
+    db.query('DELETE FROM refeicao WHERE id = ?', [req.params.id], (err) => {
+        if (err) return res.status(500).json({ error: 'Erro ao deletar refeição', details: err.message });
+        res.json({ message: 'Refeição deletada' });
+    });
+});
+
+// Rotas de alimentos
+app.get('/alimentos', (req, res) => {
+    const { refeicao_id } = req.query;
+    db.query('SELECT * FROM alimento WHERE refeicao_id = ?', [refeicao_id], (err, results) => {
+        if (err) return res.status(500).json({ error: 'Erro ao buscar alimentos', details: err.message });
+        res.json(results);
+    });
+});
+
+app.post('/alimentos', (req, res) => {
+    const { refeicao_id, nome, quantidade, calorias } = req.body;
+    db.query('INSERT INTO alimento (refeicao_id, nome, quantidade, calorias) VALUES (?, ?, ?, ?)', [refeicao_id, nome, quantidade, calorias], (err, result) => {
+        if (err) return res.status(500).json({ error: 'Erro ao adicionar alimento', details: err.message });
+        res.status(201).json({ id: result.insertId });
+    });
+});
+
+app.delete('/alimentos/:id', (req, res) => {
+    db.query('DELETE FROM alimento WHERE id = ?', [req.params.id], (err) => {
+        if (err) return res.status(500).json({ error: 'Erro ao deletar alimento', details: err.message });
+        res.json({ message: 'Alimento deletado' });
+    });
+});
+
+// Marcar refeição como concluída
+app.post('/refeicao_usuario', (req, res) => {
+    const { usuario_id, refeicao_id, data, concluida } = req.body;
+    db.query('INSERT INTO refeicao_usuario (usuario_id, refeicao_id, data, concluida) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE concluida = ?', [usuario_id, refeicao_id, data, concluida, concluida], (err) => {
+        if (err) return res.status(500).json({ error: 'Erro ao marcar refeição', details: err.message });
+        res.json({ message: 'Refeição marcada' });
+    });
+});
+
+// Buscar refeições concluídas do dia e calorias totais
+app.get('/calorias_dia', (req, res) => {
+    const { usuario_id, data } = req.query;
+    const sql = `SELECT SUM(a.calorias) as total_calorias FROM refeicao_usuario ru
+        JOIN alimento a ON ru.refeicao_id = a.refeicao_id
+        WHERE ru.usuario_id = ? AND ru.data = ? AND ru.concluida = 1`;
+    db.query(sql, [usuario_id, data], (err, results) => {
+        if (err) return res.status(500).json({ error: 'Erro ao buscar calorias', details: err.message });
+        res.json({ total_calorias: results[0].total_calorias || 0 });
+    });
+});
+
+// Rota para saber se uma refeição está concluída para o usuário no dia
+app.get('/refeicao_usuario', (req, res) => {
+    const { usuario_id, refeicao_id, data } = req.query;
+    db.query('SELECT concluida FROM refeicao_usuario WHERE usuario_id = ? AND refeicao_id = ? AND data = ?', [usuario_id, refeicao_id, data], (err, results) => {
+        if (err) return res.status(500).json({ error: 'Erro ao buscar status da refeição', details: err.message });
+        if (results.length > 0) {
+            res.json({ concluida: results[0].concluida });
+        } else {
+            res.json({ concluida: 0 });
+        }
+    });
+});
+
+// Rota para debug: listar todas as refeições
+app.get('/todas_refeicoes', (req, res) => {
+    db.query('SELECT * FROM refeicao', (err, results) => {
+        if (err) return res.status(500).json({ error: 'Erro ao buscar todas as refeições', details: err.message });
+        res.json(results);
+    });
+});
+
 app.listen(port, () => console.log(`Servidor rodando na porta ${port}`));

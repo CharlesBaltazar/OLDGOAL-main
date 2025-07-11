@@ -38,5 +38,25 @@
             </div>
         </div>
     </main>
+    <script>
+    document.querySelector('.apple-icon').addEventListener('click', function() {
+        window.location.href = './refeicoes.html';
+    });
+
+    // Atualizar calorias consumidas do dia
+    async function atualizarCaloriasConsumidas() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) return;
+        const hoje = new Date().toISOString().slice(0, 10);
+        try {
+            const res = await fetch(`/calorias_dia?usuario_id=${user.id}&data=${hoje}`);
+            const data = await res.json();
+            document.querySelector('.calorie-value').textContent = (data.total_calorias || 0).toString().padStart(4, '0');
+        } catch (e) {
+            document.querySelector('.calorie-value').textContent = '0000';
+        }
+    }
+    atualizarCaloriasConsumidas();
+    </script>
 </body>
 </html>

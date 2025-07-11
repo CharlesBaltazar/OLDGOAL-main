@@ -352,3 +352,315 @@ hr {
         font-size: 24px;
     }
 }
+
+/* --- REFEICOES E MONTAR REFEICAO --- */
+.refeicoes-container, .montar-container {
+    background: #e0fcfc;
+    border-radius: 18px;
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    padding: 32px 32px 24px 32px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.refeicoes-header, .montar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.refeicoes-apple {
+    border: 2px solid #0F87BA;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    color: #0F87BA;
+    background: #e0fcfc;
+}
+
+.voltar-btn, .montar-btn, .finalizar-btn, .confirmar-btn, #adicionar-alimento {
+    border: 2px solid #0F87BA;
+    background: none;
+    color: #0F87BA;
+    border-radius: 30px;
+    padding: 10px 36px;
+    font-size: 20px;
+    font-family: 'Jost', sans-serif;
+    cursor: pointer;
+    margin: 0 8px;
+    transition: background 0.2s, color 0.2s;
+    font-weight: 400;
+}
+.voltar-btn:hover, .montar-btn:hover, .finalizar-btn:hover, .confirmar-btn:hover, #adicionar-alimento:hover {
+    background: #0F87BA;
+    color: #fff;
+}
+
+.refeicoes-list {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.refeicao-card {
+    background: #c6f7fa;
+    border: 2px solid #0F87BA;
+    border-radius: 12px;
+    padding: 18px 18px 12px 18px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.refeicao-info {
+    flex: 1;
+}
+
+.refeicao-nome {
+    font-size: 20px;
+    color: #0F87BA;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+.refeicao-horario {
+    font-size: 16px;
+    color: #0F87BA;
+    margin-bottom: 2px;
+}
+.refeicao-calorias {
+    font-size: 16px;
+    color: #0F87BA;
+    margin-bottom: 2px;
+}
+
+.refeicao-icone {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1.5px solid #0F87BA;
+    background: #fff;
+}
+
+.refeicao-alimentos {
+    font-size: 15px;
+    color: #0F87BA;
+    margin-top: 6px;
+    margin-bottom: 2px;
+}
+
+.refeicao-alimentos-list {
+    margin-top: 10px;
+    margin-bottom: 4px;
+    padding: 8px 10px;
+    background: #e0fcfc;
+    border-radius: 8px;
+    border: 1px solid #b2e6f7;
+    font-size: 16px;
+    color: #0F87BA;
+}
+.alimento-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 0;
+    border-bottom: 1px solid #b2e6f7;
+    font-size: 16px;
+}
+.alimento-list-item:last-child {
+    border-bottom: none;
+}
+
+.refeicao-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.concluir-checkbox {
+    margin-left: 8px;
+    transform: scale(1.3);
+}
+
+/* Montar refeição */
+.montar-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.form-refeicao {
+    display: flex;
+    width: 100%;
+    gap: 32px;
+    justify-content: space-between;
+}
+.form-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.icones-refeicao {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+}
+.icone-btn {
+    border: 2px solid #0F87BA;
+    background: none;
+    border-radius: 8px;
+    padding: 4px;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+}
+.icone-btn.selected, .icone-btn:hover {
+    background: #0F87BA;
+    border-color: #0F87BA;
+}
+.icone-btn img {
+    width: 36px;
+    height: 36px;
+    display: block;
+}
+.alimentos-list {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background: #c6f7fa;
+    border: 1.5px solid #0F87BA;
+    border-radius: 8px;
+    padding: 8px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+.alimento-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: #0F87BA;
+    margin-bottom: 4px;
+}
+.alimento-nome {
+    font-weight: 500;
+}
+.alimento-calorias {
+    font-weight: 400;
+    margin-left: 12px;
+}
+.calorias-totais {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #0F87BA;
+    font-weight: 500;
+}
+
+/* Inputs personalizados para montar refeição */
+.form-refeicao input[type="text"],
+.form-refeicao input[type="number"],
+.form-refeicao input[type="time"] {
+    border: 2px solid #0F87BA;
+    border-radius: 18px;
+    padding: 10px 16px;
+    font-size: 18px;
+    font-family: 'Jost', sans-serif;
+    color: #0F87BA;
+    background: #e0fcfc;
+    margin-bottom: 8px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.form-refeicao input[type="text"]:focus,
+.form-refeicao input[type="number"]:focus,
+.form-refeicao input[type="time"]:focus {
+    border: 2.5px solid #0F87BA;
+    background: #c6f7fa;
+}
+
+@media (max-width: 900px) {
+    .refeicoes-container, .montar-container {
+        max-width: 98vw;
+        padding: 10px 2vw 10px 2vw;
+    }
+    .form-refeicao {
+        flex-direction: column;
+        gap: 18px;
+    }
+}
+
+/* Modal de detalhes de refeição */
+.modal-refeicao {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: #e0fcfc;
+    border-radius: 16px;
+    padding: 32px 28px 24px 28px;
+    min-width: 340px;
+    max-width: 95vw;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+    position: relative;
+}
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 28px;
+    color: #0F87BA;
+    cursor: pointer;
+    font-weight: bold;
+}
+.modal-content h2 {
+    color: #0F87BA;
+    margin-bottom: 10px;
+}
+.modal-content ul {
+    padding-left: 18px;
+    margin-bottom: 12px;
+}
+.modal-content li {
+    color: #0F87BA;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.modal-content .edit-btn, .modal-content .delete-btn, .modal-content .delete-refeicao-btn {
+    border: 1.5px solid #0F87BA;
+    background: none;
+    color: #0F87BA;
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-size: 15px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.modal-content .edit-btn:hover, .modal-content .delete-btn:hover, .modal-content .delete-refeicao-btn:hover {
+    background: #0F87BA;
+    color: #fff;
+}
+.modal-content .delete-refeicao-btn {
+    margin-top: 18px;
+    width: 100%;
+    padding: 8px 0;
+    font-size: 17px;
+    border-radius: 18px;
+}
