@@ -664,3 +664,701 @@ hr {
     font-size: 17px;
     border-radius: 18px;
 }
+
+/* Estilos para Histórico */
+.historico-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.historico-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.historico-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #0F87BA;
+}
+
+.historico-title h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.historico-title i {
+    font-size: 32px;
+}
+
+.filtros {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.data-input {
+    padding: 10px 15px;
+    border: 2px solid #0F87BA;
+    border-radius: 25px;
+    background: white;
+    color: #0F87BA;
+    font-size: 16px;
+    outline: none;
+}
+
+.filtrar-btn {
+    background: #0F87BA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.filtrar-btn:hover {
+    background: #0a6b8a;
+}
+
+.historico-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(15, 135, 186, 0.1);
+    border: 2px solid #0F87BA;
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: #0F87BA;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.historico-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.historico-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(15, 135, 186, 0.1);
+    border: 2px solid #f0f0f0;
+    transition: all 0.3s;
+}
+
+.historico-card:hover {
+    border-color: #0F87BA;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(15, 135, 186, 0.15);
+}
+
+.historico-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.refeicao-info h3 {
+    margin: 0 0 10px 0;
+    color: #0F87BA;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.horario-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 16px;
+}
+
+.calorias-info {
+    text-align: right;
+}
+
+.calorias-valor {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0F87BA;
+    line-height: 1;
+}
+
+.calorias-label {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.historico-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.alimentos-preview, .data-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.historico-card-actions {
+    text-align: right;
+}
+
+.ver-detalhes-btn {
+    background: #0F87BA;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ver-detalhes-btn:hover {
+    background: #0a6b8a;
+}
+
+.sem-dados {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+}
+
+.sem-dados i {
+    font-size: 64px;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.sem-dados h3 {
+    margin: 0 0 10px 0;
+    color: #0F87BA;
+    font-size: 24px;
+}
+
+.erro-mensagem {
+    text-align: center;
+    padding: 40px;
+    color: #e74c3c;
+    background: #ffeaea;
+    border-radius: 15px;
+    border: 2px solid #e74c3c;
+}
+
+/* Modal do Histórico */
+.modal-historico {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-header {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.modal-header h2 {
+    margin: 0 0 15px 0;
+    color: #0F87BA;
+    font-size: 28px;
+}
+
+.modal-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.horario-modal, .data-modal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 16px;
+}
+
+.modal-content-detalhes {
+    max-width: 500px;
+}
+
+.calorias-total-modal {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border: 2px solid #0F87BA;
+}
+
+.calorias-numero {
+    font-size: 48px;
+    font-weight: 700;
+    color: #0F87BA;
+    line-height: 1;
+}
+
+.calorias-texto {
+    font-size: 18px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.alimentos-lista-modal h3 {
+    margin: 0 0 20px 0;
+    color: #0F87BA;
+    font-size: 20px;
+}
+
+.alimentos-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.alimento-item-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #e9ecef;
+}
+
+.alimento-nome {
+    font-weight: 600;
+    color: #0F87BA;
+    flex: 1;
+}
+
+.alimento-quantidade {
+    color: #666;
+    margin: 0 15px;
+}
+
+.alimento-calorias {
+    font-weight: 600;
+    color: #0F87BA;
+}
+
+.sem-alimentos {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .historico-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .filtros {
+        justify-content: center;
+    }
+    
+    .historico-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .historico-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .calorias-info {
+        text-align: left;
+    }
+    
+    .historico-card-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .modal-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Estilos para Perfil */
+.perfil-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.perfil-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.perfil-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #0F87BA;
+}
+
+.perfil-title h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.perfil-title i {
+    font-size: 32px;
+}
+
+.salvar-btn {
+    background: #0F87BA;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+    font-size: 16px;
+}
+
+.salvar-btn:hover {
+    background: #0a6b8a;
+}
+
+.perfil-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.perfil-avatar {
+    text-align: center;
+}
+
+.avatar-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0F87BA, #6ae4f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 8px 25px rgba(15, 135, 186, 0.3);
+}
+
+.avatar-circle i {
+    font-size: 64px;
+    color: white;
+}
+
+.alterar-foto-btn {
+    background: transparent;
+    color: #0F87BA;
+    border: 2px solid #0F87BA;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.alterar-foto-btn:hover {
+    background: #0F87BA;
+    color: white;
+}
+
+.perfil-form {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(15, 135, 186, 0.1);
+    border: 2px solid #f0f0f0;
+}
+
+.form-section {
+    margin-bottom: 40px;
+}
+
+.form-section h3 {
+    color: #0F87BA;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #0F87BA;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #0F87BA;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.gender-select {
+    display: flex;
+    gap: 15px;
+}
+
+.gender-btn {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    color: #666;
+}
+
+.gender-btn:hover {
+    border-color: #0F87BA;
+    color: #0F87BA;
+}
+
+.gender-btn.selected {
+    border-color: #0F87BA;
+    background: #0F87BA;
+    color: white;
+}
+
+.perfil-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(15, 135, 186, 0.1);
+    border: 2px solid #0F87BA;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0F87BA, #6ae4f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-icon i {
+    font-size: 24px;
+    color: white;
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0F87BA;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Modal de Confirmação */
+.modal-confirmacao {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-confirmacao .modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-confirmacao .modal-header {
+    margin-bottom: 20px;
+}
+
+.modal-confirmacao .modal-header i {
+    font-size: 48px;
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.modal-confirmacao .modal-header h2 {
+    margin: 0;
+    color: #0F87BA;
+    font-size: 24px;
+}
+
+.modal-confirmacao .modal-body {
+    margin-bottom: 25px;
+}
+
+.modal-confirmacao .modal-body p {
+    color: #666;
+    font-size: 16px;
+    margin: 0;
+}
+
+.modal-confirmacao .modal-footer {
+    text-align: center;
+}
+
+.modal-btn {
+    background: #0F87BA;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.modal-btn:hover {
+    background: #0a6b8a;
+}
+
+/* Responsividade para Perfil */
+@media (max-width: 768px) {
+    .perfil-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .perfil-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .gender-select {
+        flex-direction: column;
+    }
+    
+    .perfil-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .stat-icon {
+        margin-bottom: 15px;
+    }
+}

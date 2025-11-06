@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Usuários</title>
+    <link rel="icon" href="/backend/assets/OG_icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="perfil-container">
+        <div class="perfil-header">
+            <button class="voltar-btn" id="voltar-index">VOLTAR</button>
+            <div class="perfil-title">
+                <i class="fa-solid fa-users"></i>
+                <h1>USUÁRIOS</h1>
+            </div>
+            <div style="display:flex; gap:8px;">
+                <input id="busca" type="text" placeholder="Buscar por nome/email" style="padding:8px 10px; border-radius:8px; border:1px solid #ddd;">
+            </div>
+        </div>
+
+        <div class="perfil-content" style="gap:16px;">
+            <div id="users-grid" style="display:grid; gap:10px; width:100%;"></div>
+        </div>
+    </div>
+
+    <div id="modal-editar" class="modal-confirmacao" style="display:none;">
+        <div class="modal-content" style="max-width:520px;">
+            <div class="modal-header">
+                <i class="fa-solid fa-user-pen"></i>
+                <h2>Editar Usuário</h2>
+            </div>
+            <div class="modal-body">
+                <form id="form-editar" class="perfil-form">
+                    <div class="form-group"><label>Nome</label><input type="text" id="e_nome"></div>
+                    <div class="form-group"><label>Email</label><input type="email" id="e_email"></div>
+                    <div class="form-group"><label>Data de Nascimento</label><input type="date" id="e_data"></div>
+                    <div class="form-group">
+                        <label>Gênero</label>
+                        <select id="e_genero">
+                            <option value="">-</option>
+                            <option value="homem">Homem</option>
+                            <option value="mulher">Mulher</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Função</label>
+                        <select id="e_role">
+                            <option value="user">user</option>
+                            <option value="admin">admin</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Bio</label><textarea id="e_bio"></textarea></div>
+                </form>
+            </div>
+            <div class="modal-footer" style="display:flex; gap:8px;">
+                <button class="modal-btn" id="btn-cancelar">Cancelar</button>
+                <button class="modal-btn" id="btn-salvar" style="background:#1e90ff;">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./usuarios.js"></script>
+</body>
+</html>
+
+

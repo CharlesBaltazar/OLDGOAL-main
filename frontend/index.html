@@ -35,28 +35,174 @@
             </div>
             <div class="access-row center">
                 <button class="access-btn"><i class="fa-solid fa-gear"></i> CONFIGURAÇÃO</button>
+                <button id="admin-users-btn" class="access-btn" style="display:none;"><i class="fa-solid fa-users"></i> USUÁRIOS</button>
             </div>
+        </div>
+        <div id="admin-users" style="display:none; margin-top: 24px;">
+            <h2 style="margin-bottom:12px;">Usuários (admin)</h2>
+            <div id="users-list" style="display:grid; gap:8px;"></div>
         </div>
     </main>
     <script>
     document.querySelector('.apple-icon').addEventListener('click', function() {
         window.location.href = './refeicoes.html';
     });
+    
+    document.querySelector('.hist-button').addEventListener('click', function() {
+        window.location.href = './historico.html';
+    });
+    
+    // Conectar botão de perfil
+    document.querySelectorAll('.access-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Botão clicado:', this.textContent.trim());
+            if (this.textContent.includes('PERFIL')) {
+                console.log('Redirecionando para perfil...');
+                window.location.href = './perfil.html';
+            }
+        });
+    });
 
     // Atualizar calorias consumidas do dia
     async function atualizarCaloriasConsumidas() {
         const user = JSON.parse(localStorage.getItem('user'));
-        if (!user) return;
+        if (!user) {
+            document.querySelector('.calorie-value').textContent = '0000';
+            return;
+        }
+        
         const hoje = new Date().toISOString().slice(0, 10);
         try {
-            const res = await fetch(`/calorias_dia?usuario_id=${user.id}&data=${hoje}`);
+            const res = await fetch(`http://localhost:3022/calorias_dia?usuario_id=${user.id}&data=${hoje}`);
             const data = await res.json();
-            document.querySelector('.calorie-value').textContent = (data.total_calorias || 0).toString().padStart(4, '0');
+            const totalCalorias = data.total_calorias || 0;
+            document.querySelector('.calorie-value').textContent = totalCalorias.toString().padStart(4, '0');
+            
+            // Salvar no localStorage para uso em outras páginas
+            localStorage.setItem('calorias_dia', totalCalorias);
         } catch (e) {
+            console.error('Erro ao buscar calorias:', e);
             document.querySelector('.calorie-value').textContent = '0000';
         }
     }
-    atualizarCaloriasConsumidas();
+
+    // Atualizar próxima refeição
+    async function atualizarProximaRefeicao() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) return;
+        
+        try {
+            const res = await fetch(`http://localhost:3022/refeicoes?usuario_id=${user.id}`);
+            const refeicoes = await res.json();
+            
+            if (refeicoes.length > 0) {
+                // Ordenar por horário e pegar a próxima
+                const agora = new Date();
+                const horaAtual = agora.getHours() * 60 + agora.getMinutes();
+                
+                const proximaRefeicao = refeicoes
+                    .map(ref => ({
+                        ...ref,
+                        horarioMinutos: parseInt(ref.horario.split(':')[0]) * 60 + parseInt(ref.horario.split(':')[1])
+                    }))
+                    .filter(ref => ref.horarioMinutos > horaAtual)
+                    .sort((a, b) => a.horarioMinutos - b.horarioMinutos)[0];
+                
+                if (proximaRefeicao) {
+                    const horarioFormatado = proximaRefeicao.horario.slice(0, 5);
+                    document.querySelector('.next-meal-label').textContent = `PRÓXIMA REFEIÇÃO: ${horarioFormatado}`;
+                } else {
+                    document.querySelector('.next-meal-label').textContent = 'PRÓXIMA REFEIÇÃO: Amanhã';
+                }
+            } else {
+                document.querySelector('.next-meal-label').textContent = 'PRÓXIMA REFEIÇÃO: Nenhuma';
+            }
+        } catch (e) {
+            console.error('Erro ao buscar próxima refeição:', e);
+            document.querySelector('.next-meal-label').textContent = 'PRÓXIMA REFEIÇÃO: --:--';
+        }
+    }
+
+    // Carregar dados quando a página carrega
+    document.addEventListener('DOMContentLoaded', function() {
+        atualizarCaloriasConsumidas();
+        atualizarProximaRefeicao();
+        
+        // Atualizar a cada 30 segundos
+        setInterval(() => {
+            atualizarCaloriasConsumidas();
+            atualizarProximaRefeicao();
+        }, 30000);
+
+        // Checar se usuário logado é admin e, se for, carregar lista
+        inicializarListaUsuariosAdmin();
+        configurarBotaoUsuariosAdmin();
+    });
+
+    // Atualizar quando voltar de outras páginas
+    window.addEventListener('focus', function() {
+        atualizarCaloriasConsumidas();
+        atualizarProximaRefeicao();
+    });
+
+    async function inicializarListaUsuariosAdmin() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) return;
+
+        try {
+            const uRes = await fetch(`http://localhost:3022/usuario/${user.id}`);
+            const uData = await uRes.json();
+            if (uData && uData.role === 'admin') {
+                document.getElementById('admin-users').style.display = 'block';
+                const listRes = await fetch(`http://localhost:3022/usuarios?admin_id=${user.id}`);
+                const users = await listRes.json();
+                const listEl = document.getElementById('users-list');
+                listEl.innerHTML = '';
+                users.forEach(u => {
+                    const item = document.createElement('div');
+                    item.style.padding = '10px';
+                    item.style.border = '1px solid #ddd';
+                    item.style.borderRadius = '8px';
+                    item.style.background = '#fff';
+                    item.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+                            <div>
+                                <div style="font-weight:600;">${u.nome || 'Sem nome'}</div>
+                                <div style="font-size:12px; color:#555;">${u.email || '-'}</div>
+                            </div>
+                            <div style="font-size:12px; color:#333; text-align:right;">
+                                <div>Gênero: ${u.genero || '-'}</div>
+                                <div>Nasc.: ${u.data_nascimento ? u.data_nascimento.substring(0,10) : '-'}</div>
+                                <div>Função: ${u.role}</div>
+                            </div>
+                        </div>
+                    `;
+                    listEl.appendChild(item);
+                });
+            }
+        } catch (e) {
+            console.error('Erro ao carregar lista de usuários (admin):', e);
+        }
+    }
+
+    async function configurarBotaoUsuariosAdmin() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) return;
+        try {
+            const uRes = await fetch(`http://localhost:3022/usuario/${user.id}`);
+            const uData = await uRes.json();
+            if (uData && uData.role === 'admin') {
+                const btn = document.getElementById('admin-users-btn');
+                btn.style.display = 'inline-flex';
+                btn.addEventListener('click', () => {
+                    window.location.href = './usuarios.html';
+                });
+            }
+        } catch (e) {
+            console.error('Erro ao configurar botão de usuários:', e);
+        }
+    }
     </script>
 </body>
 </html>

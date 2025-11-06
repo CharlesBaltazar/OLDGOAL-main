@@ -66,25 +66,27 @@ form.onsubmit = async function(e) {
         alert('Preencha todos os campos e adicione pelo menos um alimento!');
         return;
     }
-    // Criar refeição
+    // Criar refeição com alimentos
     const res = await fetch('http://localhost:3022/refeicoes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ usuario_id, nome, horario, icone: iconeSelecionado })
+        body: JSON.stringify({ 
+            usuario_id, 
+            nome, 
+            horario, 
+            icone: iconeSelecionado,
+            alimentos: alimentos
+        })
     });
     const data = await res.json();
-    const refeicao_id = data.id;
-    // Adicionar alimentos
-    for (const a of alimentos) {
-        await fetch('http://localhost:3022/alimentos', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ refeicao_id, nome: a.nome, quantidade: a.quantidade, calorias: a.calorias })
-        });
+    
+    if (res.ok) {
+        alert('Refeição criada com sucesso!');
+        localStorage.setItem('refeicao_criada', '1');
+        window.location.href = './refeicoes.html';
+    } else {
+        alert('Erro ao criar refeição: ' + (data.error || 'Erro desconhecido'));
     }
-    alert('Refeição criada com sucesso!');
-    localStorage.setItem('refeicao_criada', '1');
-    window.location.href = './refeicoes.html';
 };
 
 document.querySelector('.voltar-btn').onclick = () => window.location.href = './refeicoes.html'; 

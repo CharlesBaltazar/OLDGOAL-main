@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Histórico de Refeições</title>
+    <link rel="icon" href="/backend/assets/OG_icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="historico-container">
+        <div class="historico-header">
+            <button class="voltar-btn">VOLTAR</button>
+            <div class="historico-title">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <h1>HISTÓRICO DE REFEIÇÕES</h1>
+            </div>
+            <div class="filtros">
+                <input type="date" id="data-filtro" class="data-input">
+                <button id="filtrar-btn" class="filtrar-btn">FILTRAR</button>
+            </div>
+        </div>
+        
+        <div class="historico-stats">
+            <div class="stat-card">
+                <div class="stat-value" id="total-calorias">0</div>
+                <div class="stat-label">CALORIAS TOTAIS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="total-refeicoes">0</div>
+                <div class="stat-label">REFEIÇÕES CONCLUÍDAS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="data-selecionada">HOJE</div>
+                <div class="stat-label">DATA</div>
+            </div>
+        </div>
+        
+        <div class="historico-content">
+            <div class="historico-list" id="historico-list">
+                <!-- Refeições serão carregadas aqui -->
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-historico" class="modal-historico" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-detalhes-historico"></div>
+        </div>
+    </div>
+    
+    <script src="./historico.js"></script>
+</body>
+</html>

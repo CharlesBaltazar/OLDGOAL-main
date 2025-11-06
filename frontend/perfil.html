@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Perfil do Usuário</title>
+    <link rel="icon" href="/backend/assets/OG_icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="perfil-container">
+        <div class="perfil-header">
+            <button class="voltar-btn">VOLTAR</button>
+            <div class="perfil-title">
+                <i class="fa-solid fa-user"></i>
+                <h1>MEU PERFIL</h1>
+            </div>
+			<div style="display:flex; gap:8px;">
+				<button id="logout-btn" class="salvar-btn" style="background:#666;">SAIR</button>
+				<button id="excluir-btn" class="salvar-btn" style="background:#c0392b;">EXCLUIR CONTA</button>
+				<button id="salvar-btn" class="salvar-btn">SALVAR</button>
+			</div>
+        </div>
+        
+        <div class="perfil-content">
+            <div class="perfil-avatar">
+                <div class="avatar-circle">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <button class="alterar-foto-btn">
+                    <i class="fa-solid fa-camera"></i>
+                    ALTERAR FOTO
+                </button>
+            </div>
+            
+            <form id="perfil-form" class="perfil-form">
+                <div class="form-section">
+                    <h3>Informações Pessoais</h3>
+                    
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="data_nascimento">Data de Nascimento</label>
+                        <input type="date" id="data_nascimento" name="data_nascimento" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="genero">Gênero</label>
+                        <div class="gender-select">
+                            <button type="button" class="gender-btn" data-value="homem">
+                                <i class="fa-solid fa-mars"></i>
+                                Homem
+                            </button>
+                            <button type="button" class="gender-btn" data-value="mulher">
+                                <i class="fa-solid fa-venus"></i>
+                                Mulher
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Sobre Mim</h3>
+                    
+                    <div class="form-group">
+                        <label for="bio">Biografia</label>
+                        <textarea id="bio" name="bio" placeholder="Conte um pouco sobre você, seus objetivos de saúde, preferências alimentares..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Segurança</h3>
+                    
+                    <div class="form-group">
+                        <label for="senha_atual">Senha Atual</label>
+                        <input type="password" id="senha_atual" name="senha_atual" placeholder="Digite sua senha atual">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nova_senha">Nova Senha</label>
+                        <input type="password" id="nova_senha" name="nova_senha" placeholder="Digite uma nova senha">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmar_senha">Confirmar Nova Senha</label>
+                        <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Confirme a nova senha">
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="perfil-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-value" id="dias-cadastrado">0</div>
+                    <div class="stat-label">Dias Cadastrado</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-value" id="total-refeicoes">0</div>
+                    <div class="stat-label">Refeições Criadas</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-value" id="total-calorias">0</div>
+                    <div class="stat-label">Calorias Totais</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-confirmacao" class="modal-confirmacao" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fa-solid fa-check-circle"></i>
+                <h2>Perfil Atualizado!</h2>
+            </div>
+            <div class="modal-body">
+                <p>Suas informações foram salvas com sucesso.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn" onclick="fecharModal()">OK</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./perfil.js"></script>
+</body>
+</html>
